@@ -1,0 +1,16 @@
+{
+  "name": "gdrive-node",
+  "version": "1.0.0",
+  "description": "backend for gdrive-react",
+  "main": "index.js",
+  "author": "vickean",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "eslint": "^6.8.0",
+    "express": "^4.17.1"
+  },
+  "scripts": {
+    "start": "node index.js"
+  }
+}
