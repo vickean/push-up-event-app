@@ -27,6 +27,7 @@ export const Counter = (props: any) => {
       body: JSON.stringify({
         name: location.state,
         count: count,
+        timeStamp: new Date(),
       }),
     })
       .then(res => res.json())

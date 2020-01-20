@@ -17,6 +17,24 @@ app.get("/ping", (req, res) => {
   console.log("ponged");
 });
 
+app.get("/get-count", (req, res) => {
+  const stream = fs.createReadStream("data.txt");
+
+  const streamToString = stream => {
+    const chunks = [];
+    return new Promise((resolve, reject) => {
+      stream.on("data", chunk => chunks.push(chunk));
+      stream.on("error", reject);
+      stream.on("end", () => resolve(Buffer.concat(chunks).toString("utf8")));
+    });
+  };
+
+  streamToString(stream).then(response => {
+    let fileData = response.toString();
+    res.json(fileData);
+  });
+});
+
 app.get("*", (req, res) => {
   res.json("Unknown Request. Here's a Potato.");
 });
