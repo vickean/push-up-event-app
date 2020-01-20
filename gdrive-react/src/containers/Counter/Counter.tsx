@@ -18,6 +18,22 @@ export const Counter = (props: any) => {
     setCount(0)
   }
   const saveCount = () => {
+    fetch('/save-count', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        name: location.state,
+        count: count,
+      }),
+    })
+      .then(res => res.json())
+      .then(res => {
+        console.log('response :', res)
+      })
+
     history.push({
       pathname: '/thankyou',
       state: {
